@@ -29,7 +29,14 @@
 		<mapper
 		    resource="TempPhotosMapper.xml" />
 		
+		<mapper 
+		    resource="PhotosMapper.xml"/>
 		
+		<mapper 
+		    resource="AdminMapper.xml"/>
+		
+		<mapper 
+		    resource="CommendMapper.xml"/>
 	</mappers>
 </configuration>
 

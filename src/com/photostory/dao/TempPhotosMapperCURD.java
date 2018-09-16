@@ -28,8 +28,8 @@ public class TempPhotosMapperCURD implements TempPhotosMapper{
 		ArrayList<Tphotos> tphotos = new ArrayList<Tphotos>();
 		try {
 			/*通过sqlSession获取对应接口的对象*/
-			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);
-			/*通过接口方法映射的SQL语句执行对应CURD操作*/
+			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);  
+			/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
 			tphotos = mapper.getAllTempPhotos();
 		}finally {
 			sqlSession.close();
@@ -54,5 +54,4 @@ public class TempPhotosMapperCURD implements TempPhotosMapper{
 		}
 		return tphotos;
 	}
-
 }

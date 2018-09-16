@@ -11,4 +11,7 @@
         <result property="pcommend" column="pcommend"/>
     </resultMap>
     
+    <select id="getAllPhotos" resultMap="photos">
+        select pno,userID,pname,pstory,pcommend from photos from photos
+    </select>
 </mapper>
