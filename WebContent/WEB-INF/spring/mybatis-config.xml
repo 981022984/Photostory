@@ -28,6 +28,8 @@
 		
 		<mapper
 		    resource="TempPhotosMapper.xml" />
+		
+		
 	</mappers>
 </configuration>
 
