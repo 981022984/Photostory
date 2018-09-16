@@ -1,0 +1,176 @@
+@charset "UTF-8";
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.body{ /*最底层 */
+	background:url("../image/p4.jpg");
+	height: 888px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+	position: relative;
+}
+.one{
+	font-family:宋体;
+	font-size:24px;
+	color:red;
+}
+.base{/* 总体顶层 */
+	background:url("../image/p3.jpg");
+	height: 888px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+	position: relative; 
+}
+.two{/* 登录框顶层 */
+	height: 408px;
+	width: 368px;  
+	position: absolute;
+	background-color: #a9bcb5;
+	top: 34%;
+	left: 71%;
+}
+.two .three{   /* 登录提示信息 */
+	width: 86%;
+	border-bottom: 1px solid #ee7700;
+	margin-bottom: 60px;
+	margin-top: 0px;
+	margin-right: 7%;
+	margin-left: 7%;
+}
+.two .three .p1{  /* 登录提示信息 */
+	display: inline-block;
+	font-size: 28px;
+	margin-top: 21px;
+	width: 86%;
+}
+
+.five{/* 账号输入框 */
+	font-size:16;
+	font-style:华文宋体;
+	letter-spacing:2px; 
+	vertical-align:middle; 
+	line-height:37px; 
+	position:absolute;
+	left:16%;
+	top:40%;
+	width:71%;
+	height:11%;
+}
+.six{/* 密码输入款 */
+	font-size:16;
+	font-style:华文宋体;
+	letter-spacing:2px; 
+	vertical-align:middle; 
+	line-height:37px; 
+	position:absolute;
+	left:16%;
+	top:54%;
+	width:71%;
+	height:11%;
+}
+.serven{ /* 登录提交按钮 */
+	font-size:18;
+	font-style:华文宋体;
+	letter-spacing:16px;
+	vertical-align:middle; 
+	line-height:37px;
+	position:absolute;
+	left:16%;
+	top:67%;
+	width:71%;
+	height:11%;
+}
+
+#foot {  /* 尾部顶层 */
+	height: 180px;
+	top: 768px;
+	background-color: #4EEE94;
+	position: relative;
+}
+
+.copyright { 
+	font-family: "宋体";
+	color: #FFFFFF;
+	position: absolute;
+	top: 30%;
+	left: 34%;
+	/* transform: translate(-50%, -50%);  使用css3的transform来实现*/ 
+	height: 80px;
+	width: 40%;
+	text-align:center; 
+}
+ 
+#foot .copyright .img {
+	width: 100%;
+	height: 24px;
+	position: relative;
+}
+.copyright .img .icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-left: 22px;
+	vertical-align: middle;
+	background-image: url("../image/s3.jpg");
+	background-color: #4EEE94;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+	
+.copyright .img .icon1 {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-left: 22px;
+	vertical-align: middle;
+	background-image: url("../image/s1.jpg");
+	background-color: #4EEE94;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.copyright .img .icon2 {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-left: 22px;
+	vertical-align: middle;
+	background-image: url("../image/s2.jpg");
+	background-color: #4EEE94;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+#foot .copyright p {
+	height: 24px;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
