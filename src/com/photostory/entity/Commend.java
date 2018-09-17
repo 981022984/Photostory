@@ -14,10 +14,22 @@ public class Commend {
 	private Date commTime;    //评论时间
 	private String comm;      //评论的内容
 	private int goodComm;     //评论点赞人数
+	private String uName;      //评论人姓名
 	
 	public Commend() {
 		
 	}
+
+
+	public String getuName() {
+		return uName;
+	}
+
+
+	public void setuName(String uName) {
+		this.uName = uName;
+	}
+
 
 	public String getPno() {
 		return pno;

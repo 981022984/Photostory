@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.photostory.dao.userMapper;
+import com.photostory.dao.userMapperCURD;
 import com.photostory.entity.User;
 
 import org.springframework.test.context.ContextConfiguration;
@@ -25,8 +26,8 @@ public class TestIoc {
 	 */
 	
 	
-	/*@Resource(name="user")
-	private User user;*/
+	@Resource(name="userCURD")
+	private userMapperCURD user;
 	
 	@Test
 	public void test() {

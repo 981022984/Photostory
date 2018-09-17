@@ -57,12 +57,14 @@ public class userMapperCURD implements userMapper{
 			if(mapper.selectUser(map) != null) {
 				user = mapper.selectUser(map);
 				System.out.println(""+user.getUserName());
+				return user;
 			}
-				
+			else 
+				return null;
 		}finally {
 			sqlSession.close();
 		}
-		return user;
+		
 	}
 	
 }

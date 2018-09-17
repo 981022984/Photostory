@@ -29,12 +29,18 @@ public class TempPhotosMapperCURD implements TempPhotosMapper{
 		try {
 			/*通过sqlSession获取对应接口的对象*/
 			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);  
-			/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
-			tphotos = mapper.getAllTempPhotos();
+			if(mapper.getAllTempPhotos() != null) {
+				/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
+				tphotos = mapper.getAllTempPhotos();
+				return tphotos;
+			}
+			else 
+				return null;
+			
 		}finally {
 			sqlSession.close();
 		}
-		return tphotos;
+		
 	}
 
 	/* (non-Javadoc)
@@ -47,11 +53,16 @@ public class TempPhotosMapperCURD implements TempPhotosMapper{
 		try {
 			/*通过sqlSession获取对应接口的对象*/
 			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);
-			/*通过接口方法映射的SQL语句执行对应CURD操作*/
-			tphotos = mapper.getAllTempPhotos();
+			if(mapper.getAllTempPhotos() != null) {
+				/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
+				tphotos = mapper.getAllTempPhotos();
+				return tphotos;
+			}
+			else 
+				return null;
 		}finally {
 			sqlSession.close();
 		}
-		return tphotos;
+		
 	}
 }
