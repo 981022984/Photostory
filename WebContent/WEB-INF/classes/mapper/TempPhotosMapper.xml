@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.photostory.dao.TempPhotosMapper">
+<mapper namespace="com.photostory.dao.TempPhotosDao">
     <resultMap id="tphotos" type="com.photostory.entity.Tphotos">
         <id property="pno" column="pno"/>
   		<result property="ptime" column="ptime"/>

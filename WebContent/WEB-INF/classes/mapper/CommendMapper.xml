@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.photostory.dao.CommendMapper">
+<mapper namespace="com.photostory.dao.CommendDao">
     <!-- 通常数据库列使用大写单词命名，单词间用下划线分隔 -->
     <resultMap id="commend" type="com.photostory.entity.Commend">
         <result property="pno" column="pno"/>
