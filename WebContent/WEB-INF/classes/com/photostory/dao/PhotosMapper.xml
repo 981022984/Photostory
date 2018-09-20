@@ -3,15 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.photostory.dao.Photos">
+    <!-- 配置开启Mapper中LUR(最近最少使用)缓存，300秒刷新一次 ，缓存512条记录-->
+    <cache eviction="LRU" flushInterval="300000" size="512" readOnly="true"/>
+    
     <resultMap id="photos" type="com.photostory.entity.Photos">
         <id property="pno" column="pno"/>
-        <result property="userID" column="userID"/>
         <result property="pname" column="pname"/>
         <result property="pstory" column="pstory"/>
         <result property="pcommend" column="pcommend"/>
     </resultMap>
     
-    <select id="getAllPhotos" resultMap="photos">
-        select pno,userID,pname,pstory,pcommend from photos from photos
+    <!-- 查询所有的记录并缓存 -->
+    <select id="getAllPhotos">
+       select * from photos
+    </select>
+    
+    <!-- 查询特定页的数据，每页9张图片 -->
+    <select id="getPhotos" parameterMap="com.photostory.entity.Page" resultMap="photos">
+        select * from photos limit #{pageRow},#{pageSize}
     </select>
 </mapper>

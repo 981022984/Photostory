@@ -6,18 +6,17 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.photostory.dao.userMapperCURD;
+import com.photostory.dao.UserDao;
 import com.photostory.entity.User;
 
 @Service
 public class LoginServiceImpl implements LoginService{
-
+	@Resource
+	private UserDao userCURD;
+	
 	/* 
 	 * 重写接口的登录验证方法
 	 */
-	@Resource(name="userCURD")
-	private userMapperCURD userCURD;
-	
 	@Override
 	public boolean validateLogin(String userID, String userPassword) {
 		User user;

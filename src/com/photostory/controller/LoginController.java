@@ -1,12 +1,6 @@
 package com.photostory.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.annotation.Resource;
-import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.photostory.dao.TempPhotosMapperCURD;
-import com.photostory.entity.Tphotos;
 import com.photostory.entity.User;
 import com.photostory.service.LoginService;
-import com.photostory.service.TempPhotosService;
-import com.photostory.service.TempPhotosServiceImpl;
-import com.photostory.test.TestDealwithPhotos;
-import com.photostory.unit.DealwithPhotos;
+
 
 /**
  * 功能：实现登录部分的控制器

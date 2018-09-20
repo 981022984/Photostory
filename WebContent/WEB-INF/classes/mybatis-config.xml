@@ -7,43 +7,10 @@
     <settings>
         <!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!-- 开启缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
     
-	<environments default="development">
-		<environment id="development">
-			<!-- 使用JDBC事物管理 -->
-			<transactionManager type="JDBC" />
-			<!-- 数据源——连接池机制，创建好连接，供用户选用，不必每次使用都重新创建连接 （对比UNPOOLED）-->
-			<dataSource type="POOLED">
-				<!-- 连接驱动程序（选用的是mysql） -->
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<!-- 连接的数据库服务器,位置，端口号，数据库  以及相关设置（见笔记）-->
-				<property name="url"
-					value="jdbc:mysql://localhost:3306/photostory?useAffectedRows=true&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-				<!-- 连接用户名 -->
-				<property name="username" value="root" />
-				<!-- 连接密码 -->
-				<property name="password" value="981022984" />                        
-			</dataSource>
-		</environment>
-	</environments>
-	<mappers>
-		<!-- 需要加载的映射文件的位置 -->
-		<mapper
-			resource="userMapper.xml" />
-		
-		<mapper
-		    resource="TempPhotosMapper.xml" />
-		
-		<mapper 
-		    resource="PhotosMapper.xml"/>
-		
-		<mapper 
-		    resource="AdminMapper.xml"/>
-		
-		<mapper 
-		    resource="CommendMapper.xml"/>
-	</mappers>
 </configuration>
 
 

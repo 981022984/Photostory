@@ -297,39 +297,54 @@
 					</div>
 				</li>
 			</ul>
+			
+			
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="pagination pagination-centered">
+						<br/>
+						<br/>
+						<br/>
 						<ul>
 							<li>
-								 <a href="#">上一页</a>
-							</li>
-							<li>
-								 <a href="#">1</a>
-							</li>
-							<li>
-								 <a href="#">2</a>
-							</li>
-							<li>
-								 <a href="#">3</a>
-							</li>
-							<li>
-								 <a href="#">4</a>
-							</li>
-							<li>
-								 <a href="#">5...</a>
-							</li>
-							<li>
-								 <a href="#">下一页</a>
-							</li>
-							<li>
-								 <a href="#">末尾</a>
+								<ul>
+									<li>
+										<a href="#">上一页</a>
+									</li>
+								</ul>
+								<ul>
+									<li>
+										<a href="#">1</a>
+									</li>
+									<li>
+										<a href="#">2</a>
+									</li>
+									<li>
+										<a href="#">3</a>
+									</li>
+									<li>
+										<a href="#">4</a>
+									</li>
+									<li>
+										<a href="#">5</a>
+									</li>
+								</ul>
+								<ul>
+									<li>
+										<a href="#">下一页</a>
+									</li>
+									<li>
+										<a href="#">尾页</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		
 		<div class="span1">
 		</div>
 	</div>

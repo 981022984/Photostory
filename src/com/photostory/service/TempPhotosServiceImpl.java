@@ -7,8 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.photostory.controller.LoginController;
-import com.photostory.dao.TempPhotosMapperCURD;
+import com.photostory.dao.TempPhotosDao;
 import com.photostory.entity.Tphotos;
 import com.photostory.unit.DealwithPhotos;
 
@@ -22,7 +21,7 @@ import com.photostory.unit.DealwithPhotos;
 public class TempPhotosServiceImpl implements TempPhotosService{
 	
 	@Resource(name="tempPhotosCURD")
-	private TempPhotosMapperCURD tempPhotosCURD;
+	private TempPhotosDao tempPhotosCURD;
 
 	/* (non-Javadoc)
 	 * @see com.photostory.service.TempPhotosService#getTempPhotos()

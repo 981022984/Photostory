@@ -9,13 +9,13 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.photostory.dao.TempPhotosMapperCURD;
+import com.photostory.dao.TempPhotosDao;
 import com.photostory.entity.Tphotos;
 import com.photostory.unit.DealwithPhotos;
 
 public class TestDealwithPhotos {
-	@Resource(name="tempPhotosCURD")
-	private TempPhotosMapperCURD tempPhotosCURD;
+	@Resource()
+	private TempPhotosDao tempPhotosCURD;
 	
 	@Test
 	public void test() {

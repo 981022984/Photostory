@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.photostory.dao.Photos">
+<mapper namespace="com.photostory.dao.PhotosDao">
     <!-- 配置开启Mapper中LUR(最近最少使用)缓存，300秒刷新一次 ，缓存512条记录-->
     <cache eviction="LRU" flushInterval="300000" size="512" readOnly="true"/>
     
@@ -19,7 +19,7 @@
     </select>
     
     <!-- 查询特定页的数据，每页9张图片 -->
-    <select id="getPhotos" parameterMap="com.photostory.entity.Page" resultMap="photos">
+    <select id="getPhotos" resultMap="photos">
         select * from photos limit #{pageRow},#{pageSize}
     </select>
 </mapper>

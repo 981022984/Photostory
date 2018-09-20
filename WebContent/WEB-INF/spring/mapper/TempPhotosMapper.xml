@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.photostory.dao.TempPhotosDao">
+    <resultMap id="tphotos" type="com.photostory.entity.Tphotos">
+        <id property="pno" column="pno"/>
+  		<result property="ptime" column="ptime"/>
+  		<result property="userID" column="userID"/>
+        <result property="pname" column="pname"/>
+        <result property="path" column="path"/>
+        <result property="pstory" column="pstory"/>
+    </resultMap>
+    
+    <resultMap id="tphotos2" type="com.photostory.entity.Tphotos">
+        <id property="pno" column="pno"/>
+  		<result property="userID" column="userID"/>
+        <result property="pname" column="pname"/>
+        <result property="pstory" column="pstory"/>
+        <result property="path" column="path"/>
+    </resultMap>
+    
+    <select id="getAllTempPhotos" resultMap="tphotos">
+        select * from tphotos
+    </select>
+    
+    <select id="getAllTempPhotos2" resultMap="tphotos2">
+        select pno,userID,path,pname,pstory from tphotos
+    </select>
+</mapper>
+
+
+

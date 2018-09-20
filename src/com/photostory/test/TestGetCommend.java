@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.photostory.dao.CommendMapperCURD;
-import com.photostory.dao.TempPhotosMapper;
-import com.photostory.dao.TempPhotosMapperCURD;
+import com.photostory.dao.CommendDao;
+import com.photostory.dao.TempPhotosDao;
 import com.photostory.entity.Commend;
 import com.photostory.entity.Tphotos;
 import com.photostory.service.TempPhotosService;
@@ -24,7 +22,7 @@ import com.photostory.service.TempPhotosServiceImpl;
 @ContextConfiguration(locations = {"classpath*:application-Ioc.xml"})//装配Spring
 public class TestGetCommend {
 	@Resource(name="commendCURD")
-	private CommendMapperCURD c;
+	private CommendDao c;
 	
 	@Resource(name="sqlSessionFactory")
 	private SqlSessionFactory sqlSessionFactory;
@@ -33,7 +31,7 @@ public class TestGetCommend {
 	private TempPhotosService tempPhotosService;      //注入Service接口对象
 	
 	@Resource(name="tempPhotosCURD")
-	private TempPhotosMapperCURD tempPhotosCURD;
+	private TempPhotosDao tempPhotosCURD;
 	
 	/**
 	 * 测试评论相关信息获取
@@ -46,26 +44,6 @@ public class TestGetCommend {
 		for(Commend c : list) {
 			System.out.println(c.getuName());
 			System.out.println(c.getComm());
-		}
-	}
-	/**
-	 *  测试临时文件获取
-	 */
-	@Test
-	public void getAllTempPhotos2() {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		ArrayList<Tphotos> tphotos = new ArrayList<Tphotos>();
-		try {
-			/*通过sqlSession获取对应接口的对象*/
-			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);
-			if(mapper.getAllTempPhotos2() != null) {
-				/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
-				tphotos = mapper.getAllTempPhotos2();
-				System.out.println("--------"+tphotos.size());
-			}
-			
-		}finally {
-			sqlSession.close();
 		}
 	}
 	
