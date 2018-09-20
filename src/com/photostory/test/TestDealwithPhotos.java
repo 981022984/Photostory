@@ -25,6 +25,8 @@ public class TestDealwithPhotos {
 			System.out.println(TestDealwithPhotos.class.getResource("../../../").getPath());
 			/*DealwithPhotos.resize("../PhotoStory/WebContent/userPhotos/image/10001.jpg", "../PhotoStory/WebContent/userPhotos/pagePhotos/10001.jpg", 
 					320, 200, true);*/
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

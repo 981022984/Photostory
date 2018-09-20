@@ -16,7 +16,7 @@ import com.photostory.entity.Tphotos;
 
 public class TempPhotosMapperCURD implements TempPhotosMapper{
 	/*依赖注入SqlSessionFactory的对象作为类的属性*/
-	@Resource(name="sqlSessionFactory")
+	@Resource(name="sqlSessionFactory")     
 	private SqlSessionFactory sqlSessionFactory;
 
 	/* (non-Javadoc)
@@ -53,9 +53,9 @@ public class TempPhotosMapperCURD implements TempPhotosMapper{
 		try {
 			/*通过sqlSession获取对应接口的对象*/
 			TempPhotosMapper mapper = sqlSession.getMapper(TempPhotosMapper.class);
-			if(mapper.getAllTempPhotos() != null) {
+			if(mapper.getAllTempPhotos2() != null) {
 				/*通过接口方法映射的SQL语句执行对应CURD操作，动态代理原理*/
-				tphotos = mapper.getAllTempPhotos();
+				tphotos = mapper.getAllTempPhotos2();
 				return tphotos;
 			}
 			else 

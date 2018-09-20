@@ -32,6 +32,14 @@
     <mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	
+    <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 
+   	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      	<property name="prefix" value="/WEB-INF/pages/" />
+      	<property name="suffix" value=".html" />
+      	视图解析器优先级
+      	<property name="order" value="0" />
+   	</bean> -->
+	
 	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
    	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       	<property name="prefix" value="/WEB-INF/pages/" />

@@ -66,9 +66,12 @@ public class TempPhotosServiceImpl implements TempPhotosService{
 		list = tempPhotosCURD.getAllTempPhotos2();
 		for(Tphotos tp:list) {
 			/*用户上传图片存储位置（相对）*/
-			String src = TempPhotosServiceImpl.class.getClassLoader().getResource(tp.getPath()).getPath();      
+			String src = TempPhotosServiceImpl.class.getClassLoader().getResource("../../").getPath();
+			System.out.println(src);
+			src = src + tp.getPath(); 
 			/*缩放后图片存储路径（相对），将存放路径中的image文件夹改为pagePhotos*/
-			String dest = src.replace("image", "pagePhotos");   
+			String dest = src.replace("image", "pagePhotos");  
+			System.out.println(dest);
 			try {
 				/*工具类中图片缩放*/
 				DealwithPhotos.resize(src, dest, 380, 270, true);    			

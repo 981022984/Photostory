@@ -35,7 +35,7 @@ public class TempPhotosController {
 		//model.addAttribute("",); 
 		ArrayList<Tphotos> list = tempPhotosService.getTphotos();
 		model.addAttribute("list",list);
-		return "/HomePage";
+		return "/HomePage2";
 	}
 	
 }

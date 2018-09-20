@@ -17,14 +17,15 @@
   		<result property="userID" column="userID"/>
         <result property="pname" column="pname"/>
         <result property="pstory" column="pstory"/>
+        <result property="path" column="path"/>
     </resultMap>
     
     <select id="getAllTempPhotos" resultMap="tphotos">
         select * from tphotos
     </select>
     
-    <select id="getALLTempPhotos2" resultMap="tphotos2">
-        select pno,userID,pname,pstory from tphotos
+    <select id="getAllTempPhotos2" resultMap="tphotos2">
+        select pno,userID,path,pname,pstory from tphotos
     </select>
 </mapper>
 
