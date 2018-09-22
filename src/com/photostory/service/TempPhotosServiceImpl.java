@@ -20,9 +20,10 @@ import com.photostory.unit.DealwithPhotos;
 @Service
 public class TempPhotosServiceImpl implements TempPhotosService{
 	
-	@Resource(name="tempPhotosCURD")
+	@Resource
 	private TempPhotosDao tempPhotosCURD;
 
+	
 	/* (non-Javadoc)
 	 * @see com.photostory.service.TempPhotosService#getTempPhotos()
 	 */

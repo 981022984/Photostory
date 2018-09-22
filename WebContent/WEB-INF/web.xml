@@ -9,7 +9,7 @@
   <!-- 配置Spring容器 -->
   <context-param>
   	  <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring/application-*.xml</param-value>
+      <param-value>classpath:application-*.xml</param-value>
   </context-param>
   <!-- 配置监听器，监听ServletContext的创建（即服务器启动，项目运行前），这时加载Spring配置文件 -->
   <listener>

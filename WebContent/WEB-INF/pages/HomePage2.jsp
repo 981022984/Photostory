@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +17,13 @@
 	<!-- Le styles -->
 	<link href="./layoutit/bootstrap-combined.min.css" rel="stylesheet">
 	<link href="./layoutit/layoutit.css" rel="stylesheet">
-
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
 
 
 	<!-- Fav and touch icons -->
 	<link rel="shortcut icon" href="img/favicon.png">
-	
-	<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="./js/json2.js"></script>
+	<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<![endif]-->
@@ -34,14 +37,14 @@
 	<script type="text/javascript" src="http://www.bootcss.com/p/layoutit/ckeditor/config.js?t=D3NA"></script><link rel="stylesheet" type="text/css" href="http://www.bootcss.com/p/layoutit/ckeditor/skins/moono/editor.css?t=D3NA"><script type="text/javascript" src="http://www.bootcss.com/p/layoutit/ckeditor/lang/zh-cn.js?t=D3NA"></script><script type="text/javascript" src="http://www.bootcss.com/p/layoutit/ckeditor/styles.js?t=D3NA"></script>
 	
 	<!-- 网络包 -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<form:form action="userComment" method="post">
 <div class="container-fluid">
 	
 	<div class="row-fluid">
@@ -147,16 +150,17 @@
 			</div>
 		</div>
 		<div class="span9">
+			<div id="newPhotos">     <!-- 局部刷新图片 -->
 			<ul class="thumbnails">
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10006.jpg" />
+					<div id="photo1" class="thumbnail">
+						<img alt="270x380" src="${photos[0].psrc}" />
 						<div class="caption">
 							<h3>
-								冯诺尔曼结构
+								${photos[0].pname}
 							</h3>
-							<p>
-								也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
+							<p class="pstory">
+								${photos[0].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -165,14 +169,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10007.jpg" />
+					<div id="photo2" class="thumbnail">
+						<img alt="270x380" src="${photos[1].psrc}" />
 						<div class="caption">
 							<h3>
-								哈佛结构
+								${photos[1].pname}
 							</h3>
-							<p>
-								哈佛结构是一种将程序指令存储和中，进行独立编址。
+							<p class="pstory">
+								${photos[1].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -181,14 +185,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10005.jpg" />
+					<div id="photo3" class="thumbnail">
+						<img alt="270x380" src="${photos[2].psrc}" />
 						<div class="caption">
 							<h3>
-								改进型哈佛结构
+								${photos[2].pname}
 							</h3>
-							<p>
-								改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
+							<p class="pstory">
+								${photos[2].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -199,14 +203,14 @@
 			</ul>
 			<ul class="thumbnails">
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10008.jpg" />
+					<div id="photo4" class="thumbnail">
+						<img id="psrc3" alt="270x380" src="${photos[3].psrc}" />
 						<div class="caption">
-							<h3>
-								冯诺尔曼结构
+							<h3 class="pstory">
+								${photos[3].pname}
 							</h3>
-							<p>
-								也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
+							<p class="pstory">
+								${photos[3].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -215,14 +219,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10004.jpg" />
+					<div id="photo5" class="thumbnail">
+						<img alt="270x380" src="${photos[4].psrc}" />
 						<div class="caption">
 							<h3>
-								哈佛结构
+								${photos[4].pname}
 							</h3>
-							<p>
-								哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。
+							<p class="pstory">
+								${photos[4].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -231,14 +235,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10003.jpg" />
+					<div id="photo6" class="thumbnail">
+						<img alt="270x380" src="${photos[5].psrc}" />
 						<div class="caption">
 							<h3>
-								改进型哈佛结构
+								${photos[5].pname}
 							</h3>
-							<p>
-								改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
+							<p class="pstory">
+								${photos[5].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -249,14 +253,14 @@
 			</ul>
 			<ul class="thumbnails">
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10009.jpg"/>
+					<div id="photo7" class="thumbnail">
+						<img alt="270x380" src="${photos[6].psrc}"/>
 						<div class="caption">
 							<h3>
-								冯诺尔曼结构
+								${photos[6].pname}
 							</h3>
-							<p>
-								也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
+							<p class="pstory">
+								${photos[6].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -265,14 +269,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10001.jpg" />
+					<div id="photo8" class="thumbnail">
+						<img alt="270x380" src="${photos[7].psrc}" />
 						<div class="caption">
 							<h3>
-								哈佛结构
+								${photos[7].pname}
 							</h3>
 							<p>
-								哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。
+								${photos[7].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -281,14 +285,14 @@
 					</div>
 				</li>
 				<li class="span4">
-					<div class="thumbnail">
-						<img alt="270x380" src="./userPhotos/pagePhotos/10002.jpg" />
+					<div id="photo9" class="thumbnail">
+						<img alt="270x380" src="${photos[8].psrc}" />
 						<div class="caption">
 							<h3>
-								改进型哈佛结构
+								${photos[8].pname}
 							</h3>
-							<p>
-								改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
+							<p class="pstory">
+								${photos[8].pstory}
 							</p>
 							<p>
 								 <a class="btn btn-primary" href="#">赞</a> <a class="btn" href="#">评论</a>
@@ -297,7 +301,7 @@
 					</div>
 				</li>
 			</ul>
-			
+			</div>
 			
 			<div class="row-fluid">
 				<div class="span12">
@@ -308,32 +312,22 @@
 						<ul>
 							<li>
 								<ul>
-									<li>
+									<li id="previousPage">
 										<a href="#">上一页</a>
 									</li>
 								</ul>
-								<ul>
-									<li>
-										<a href="#">1</a>
-									</li>
-									<li>
-										<a href="#">2</a>
-									</li>
-									<li>
-										<a href="#">3</a>
-									</li>
-									<li>
-										<a href="#">4</a>
-									</li>
-									<li>
-										<a href="#">5</a>
-									</li>
+								<ul id="pages">
+									<c:forEach var="i" begin="1" end="${pages}">
+										<li>
+											<a id="pageNo" href="#">${i}</a>
+										</li>
+									</c:forEach>
 								</ul>
 								<ul>
-									<li>
+									<li id="nextPage">
 										<a href="#">下一页</a>
 									</li>
-									<li>
+									<li id="lastPage">
 										<a href="#">尾页</a>
 									</li>
 								</ul>
@@ -376,6 +370,66 @@
 		</div>
 	</div>
 </div>
+</form:form>
+<script type="text/javascript">
+$(document).ready(function(){
+	var pageNo = $("#pageNo").text();     //首页
+	var pageArray = $("#pages");          //所有页数组
+	
+	$("#nextPage").click(function nextPage(){ 
+		pageNo=(parseInt(pageNo)+1);      //下一页
+		pageNo.toString();
+		newPage();
+	});         		/* 点击下一页局部动作 */
+		
+    $("#previousPage").click(function previousPage(){
+    	if(parseInt(pageNo) == 1){
+    		alert("没有了！");
+    	}
+    	else{
+    		pageNo=(parseInt(pageNo)-1);      //下一页
+    		pageNo.toString();
+    		newPage();
+    	}
+    	
+    }); /* 点击上一页局部动作 */
     
+    
+    $("#lastPage").click(function lastPage(){
+    	pageNo=$("#pages li:last-child").text();  //获取左后一页页数 
+    	pageNo=parseInt(pageNo);
+    	pageNo.toString();
+    	newPage();
+    });         /* 点击尾页局部动作 */
+    
+    
+    $("#pages li").click(function lastPage(){
+    	pageNo=$(this).index()+1;    //被点击的页号,index()下标从0开始
+    	pageNo=parseInt(pageNo);
+    	pageNo.toString();
+    	newPage();
+    });
+	function newPage(){     /* 图片刷新 */
+		$.ajax({url:"${pageContext.request.contextPath}/newPhotos",
+				dataType:"json",                   /* 预期服务器响应数据 */  
+				type : "post",                     /* 请求类型 */
+				contenType : "application/text",   /* 发送到服务器数据格式 */
+				data :{"currentPage":pageNo},      /* 发送到服务器的数据 */
+				async : true,                      /* 异步处理 */
+				success :function(data){
+					for(var i=0;i<9;i++){
+						$("#photo"+(i+1)).find("img").attr("src",data[i].psrc);
+						$("#photo"+(i+1)).find("h3").html(data[i].pname);
+						$("#photo"+(i+1)).find("h3").next().html(data[i].pstory); 
+					}
+				},
+				error :function(){
+					alert("数据传输失败");
+				}
+			});
+		}
+	
+});
+</script>   
   </body>
 </html>

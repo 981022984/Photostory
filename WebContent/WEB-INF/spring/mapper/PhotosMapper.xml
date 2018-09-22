@@ -14,12 +14,12 @@
     </resultMap>
     
     <!-- 查询所有的记录并缓存 -->
-    <select id="getAllPhotos">
-       select * from photos
+    <select id="getAllPhotos" resultType="int">
+       select count(pno) from photos
     </select>
     
-    <!-- 查询特定页的数据，每页9张图片 -->
-    <select id="getPhotos" resultMap="photos">
-        select * from photos limit #{pageRow},#{pageSize}
+    <!-- 查询特定页的数据，每页9张图片,按评论数排序 -->
+    <select id="getPhotos" parameterType="com.photostory.entity.Page" resultMap="photos">
+        select * from photos order by ${pcomment} desc limit #{startRow},#{pageSize} 
     </select>
 </mapper>

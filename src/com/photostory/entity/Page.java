@@ -9,9 +9,15 @@ package com.photostory.entity;
 public class Page {
 	private int startRow = 0;	 //开始查询的行数,从0开始
 	private int pageSize = 9;    //页的大小，默认9
-	private String queryKey;     //查询关键字
+	private String queryKey;     //查询关键字 （不一定做）
+	private static String pcomment = "pcomment";      //排序所用字段,此处为评论人数
+	
 	public Page() {
 		
+	}
+	
+	public Page(int startRow) {
+		this.startRow = (startRow-1)*9;
 	}
 	public int getStartRow() {
 		return startRow;
@@ -31,5 +37,10 @@ public class Page {
 	public void setQueryKey(String queryKey) {
 		this.queryKey = queryKey;
 	}
-	
+	public String getPcomment() {
+		return pcomment;
+	}
+	public void setPcomment(String pcomment) {
+		this.pcomment = pcomment;
+	}
 }

@@ -29,7 +29,7 @@ public class TempPhotosController {
 	 * @return String 首页路径（需解析）
 	 * 处理后台图片，生成首页
 	 */
-	@RequestMapping(value="/dealwithPhotos")
+	@RequestMapping(value="")
 	public String getHomePage(@ModelAttribute("User") User user,Model model) {
 		//model.addAttribute("",); 
 		ArrayList<Tphotos> list = tempPhotosService.getTphotos();

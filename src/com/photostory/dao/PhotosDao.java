@@ -1,7 +1,10 @@
 package com.photostory.dao;
 
 
+import java.util.ArrayList;
+
 import com.photostory.entity.Page;
+import com.photostory.entity.Photos;
 
 
 /**
@@ -12,9 +15,9 @@ import com.photostory.entity.Page;
  */
 public interface PhotosDao {
 	/**
-	 * 查询所有的图片，并缓存12张 
+	 * 查询所有的图片，并缓存512张 
 	 */
-	public void getAllPhotos();
+	public int getAllPhotos();
 	
 	
 	/** 
@@ -22,7 +25,7 @@ public interface PhotosDao {
 	 * @param page 页的信息
 	 * @return ArrayList<Photos> 每页所有图片
 	 */
-	public void getPhotos(Page page);
+	public ArrayList<Photos> getPhotos(Page page);
 }
 
 
