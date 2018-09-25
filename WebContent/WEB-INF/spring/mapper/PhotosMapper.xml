@@ -10,10 +10,10 @@
         <id property="pno" column="pno"/>
         <result property="pname" column="pname"/>
         <result property="pstory" column="pstory"/>
-        <result property="pcommend" column="pcommend"/>
+        <result property="pcomment" column="pcomment"/>
     </resultMap>
     
-    <!-- 查询所有的记录并缓存 -->
+    <!-- 查询所有的记录并缓存 --> 
     <select id="getAllPhotos" resultType="int">
        select count(pno) from photos
     </select>
@@ -22,4 +22,12 @@
     <select id="getPhotos" parameterType="com.photostory.entity.Page" resultMap="photos">
         select * from photos order by ${pcomment} desc limit #{startRow},#{pageSize} 
     </select>
+    
+    <update id="goodPhoto">
+        update photos set pcomment=#{pcomment} where pno=#{pno}
+    </update>
 </mapper>
+
+
+
+

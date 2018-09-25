@@ -3,6 +3,8 @@ package com.photostory.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.photostory.entity.Page;
 import com.photostory.entity.Photos;
 
@@ -26,6 +28,14 @@ public interface PhotosDao {
 	 * @return ArrayList<Photos> 每页所有图片
 	 */
 	public ArrayList<Photos> getPhotos(Page page);
+	
+	
+	/**
+	 * 用户点赞，赞and评论 总数+1
+	 * @param pno
+	 * @return 受影响记录条数
+	 */
+	public int goodPhoto(@Param("pcomment")String pcomment ,@Param("pno")String pno);
 }
 
 

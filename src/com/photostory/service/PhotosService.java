@@ -29,4 +29,10 @@ public interface PhotosService {
 	 * @return int 所有图片总数
 	 */
 	public int getAllPhotosCount();
+	
+	/**
+	 * 点赞图片，赞and评论 总数+1
+	 * @param pno 图片编号
+	 */
+	public int addGoodPhoto(String pcomment, String pno);
 }

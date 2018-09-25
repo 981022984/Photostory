@@ -35,7 +35,7 @@ import com.photostory.service.PhotosService;
 @Controller
 public class MainPageController {
 	@Autowired
-	private PhotosService PhotosService;      //注入Service接口对象
+	private PhotosService photosService;      //注入Service接口对象
 	
 	/**
 	 * 获取处理后的图片，生成首页
@@ -47,8 +47,8 @@ public class MainPageController {
 	public String getHomePage(@ModelAttribute("User") User user, Model model) {
 		//model.addAttribute("",); 
 		Page page = new Page();  //新的页
-		int pages = PhotosService.getAllPhotosCount();             //总页数
-		ArrayList<Photos> photos = PhotosService.getPhotos(page);  //首页中所有图片
+		int pages = photosService.getAllPhotosCount();             //总页数
+		ArrayList<Photos> photos = photosService.getPhotos(page);  //首页中所有图片
 		model.addAttribute("pages",pages);
 		model.addAttribute("photos",photos);
 		return "/HomePage2";
@@ -73,16 +73,27 @@ public class MainPageController {
 		Page page = new Page(pageNo);
 		System.out.println("----"+page.getStartRow());
 		
-		ArrayList<Photos> photos = PhotosService.getPhotos(page);
+		ArrayList<Photos> photos = photosService.getPhotos(page);
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, Photos> map = new HashMap<String, Photos>();
 		
 		for(int i=0;i<=photos.size()-1;i++) {     //将查找到对应系的班级放在HashMap中，便于前端处理
+			System.out.println(photos.get(i).getPcomment());
 			map.put(""+i, photos.get(i));
 		}
 		System.out.println(map);
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().println(mapper.writeValueAsString(map));
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/goodPhoto")
+	public String goodPhoto(HttpServletRequest request) {
+		String pno = request.getParameter("pno");
+		String pcomment = request.getParameter("pcomment");
+		System.out.println(pcomment);
+		int x = photosService.addGoodPhoto(pcomment,pno);
+		return ""+x;
 	}
 }
 

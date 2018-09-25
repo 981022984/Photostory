@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.photostory.dao.PhotosDao;
 import com.photostory.entity.Page;
@@ -18,7 +19,9 @@ import com.photostory.unit.DealwithPhotos;
  * @time 2018年9月20日20:21:01
  * @vision 1.0
  */
+
 @Service
+@Transactional
 public class PhotosServiceImpl implements PhotosService{
 	//注入Service实现类依赖	
 	@Resource
@@ -42,15 +45,12 @@ public class PhotosServiceImpl implements PhotosService{
 		for(Photos tp:photos) {
 			/*用户上传图片存储位置（相对）*/
 			String src = TempPhotosServiceImpl.class.getClassLoader().getResource("../../").getPath();
-			System.out.println(src);
 			src = src + tp.getPath(); 
 			/*缩放后图片存储路径（相对），将存放路径中的image文件夹改为pagePhotos*/
 			String dest = src.replace("image", "pagePhotos");  
-			System.out.println(dest);
-			System.out.println(src);
 			try {
 				/*工具类中图片缩放*/
-				DealwithPhotos.resize(src, dest, 380, 270, true);    			
+				DealwithPhotos.resize(src, dest, 450, 320, true);    			
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,6 +80,16 @@ public class PhotosServiceImpl implements PhotosService{
 		
 		return pages;
 	}	
+	
+	/* (non-Javadoc)
+	 * @see com.photostory.service.PhotosService#addGoodPhoto(java.lang.String)
+	 */
+	public int addGoodPhoto(String pcomment, String pno) {
+		int count = Integer.parseInt(pcomment) + 1;
+		int k = photosCURD.goodPhoto(""+count, pno);
+		System.out.println("++++"+k);
+		return count;
+	}
 }
 
 

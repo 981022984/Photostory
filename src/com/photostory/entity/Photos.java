@@ -8,7 +8,7 @@ package com.photostory.entity;
  */
 public class Photos extends Tphotos{
 	private String adminID;    //审核图片管理员ID
-	private int pcommend;      //评论图片人数
+	private int pcomment;      //评论、点赞图片人数
 	
 	public Photos() {
 		
@@ -19,10 +19,10 @@ public class Photos extends Tphotos{
 	public void setAdminID(String adminID) {
 		this.adminID = adminID;
 	}
-	public int getPcommend() {
-		return pcommend;
+	public int getPcomment() {
+		return pcomment;
 	}
-	public void setPcommend(int pcommend) {
-		this.pcommend = pcommend;
+	public void setPcomment(int pcomment) {
+		this.pcomment = pcomment;
 	}
 }
