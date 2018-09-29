@@ -48,16 +48,12 @@
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
 					<div class="container-fluid">
-						<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse"> </a> 
 						<em><a class="brand" href="#">PhotoStory</a></em>
-
 					<div class="nav-collapse collapse navbar-responsive-collapse">
 						<ul class="nav pull-right" >
 							<li>
-								<ul class="nav">
-									<li class="active"><a href="#">主页</a></li>
-									<li><a href="#">链接</a></li>
-									<li><a href="https://www.baidu.com/">消息<span class="badge badge-success" contenteditable="true">1</span> </a></li>
+								<ul>
+									<a class="btn" href="#">注册</a>
 								</ul>
 							</li>
 						</ul>

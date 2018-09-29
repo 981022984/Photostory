@@ -5,6 +5,9 @@
     id="WebApp_ID" version="3.1">
     
   <display-name>PhotoStory</display-name>
+  <welcome-file-list>
+        <welcome-file>firstLogin</welcome-file>
+  </welcome-file-list>
   
   <!-- 配置Spring容器 -->
   <context-param>
@@ -33,6 +36,11 @@
       <servlet-name>PhotoStory</servlet-name>
       <!-- “/”拦截所有请求 -->
       <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>  
+  	  <servlet-name>PhotoStory</servlet-name>  
+  	  <url-pattern>/firstLogin</url-pattern>  
   </servlet-mapping>
   
   <!-- 启用默认servlet处理静态文件，在SpringMVC-servlet.xml中要有相应处理 -->
