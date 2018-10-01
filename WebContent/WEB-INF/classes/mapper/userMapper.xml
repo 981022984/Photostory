@@ -8,7 +8,19 @@
   		<result property="userPassword" column="UserPassword"/>
   		<result property="userName" column="UserName"/> 
   	</resultMap>
+  	
+	<!-- 根据账号密码查询用户是否存在 -->
 	<select id="selectUser" parameterType="hashmap" resultMap="user">
 		select * from user where userID=#{userID} and userPassword=#{userPassword}
-	</select>   
+	</select> 
+	 
+	<!-- 根据查找账号是否已经存在 -->
+	<select id="selectUserID" parameterType="string" resultType="int">
+	    select count(*) from user where userID=#{userID}
+	</select>
+
+	<!-- 插入新用户 -->
+	<insert id="addNewUser">
+	    insert into user(userID,userPassword) value(#{userID},#{userPassword}) 
+	</insert>
 </mapper>

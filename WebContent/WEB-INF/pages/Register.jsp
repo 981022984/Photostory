@@ -14,6 +14,7 @@
 	<!-- Le styles -->
 	<link href="./layoutit/bootstrap-combined.min.css" rel="stylesheet">
 	<link href="./layoutit/layoutit.css" rel="stylesheet">
+	<link href="./layoutit/h5.css" rel="stylesheet">
 	<link href="./css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -21,9 +22,12 @@
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="./js/json2.js"></script>
 	<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+	
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="./layoutit/html5shiv.js"></script>
 	<![endif]-->
+	
 	<script type="text/javascript" src="./layoutit/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./layoutit/jquery-ui.js"></script>
 	<script type="text/javascript" src="./layoutit/jquery.ui.touch-punch.min.js"></script>
@@ -35,8 +39,8 @@
 	
 	<!-- 网络包 -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-   	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   	<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 	
@@ -58,7 +62,7 @@
 	<div class="row-fluid">
 		<div class="span4">
 			<p>
-				<img alt="" src="https://4.url.cn/zc/v3/img/01-3.jpg" />
+				<img alt="" src="./image/p5.jpg" />
 			</p>
 		</div>
 		<div class="span8">
@@ -70,19 +74,23 @@
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
-					<form>
+					<form:form commandName="User" action="newUser" method="POST">
 						<fieldset><legend ><span style="font-size: 26.5px; font-weight: bold;">欢迎注册<em>PhotoStory</em></span>
 						<br>身边的美丽，在你我分享！<br>
 						<span style="font-size: 18px;">用户名</span><br>
-							<input placeholder="userID" style="width:420px;height:40px;" type="text"><span style="font-size: 18px;"></span><br>
+							<form:input path="userID" placeholder="userID" style="width:420px;height:40px;" type="text"/>
+							<form:errors path="userID" cssStyle="color:red"/>
+							<span style="font-size: 18px;"></span><br>
 						<span style="font-size: 18px;">密码</span><br>
-							<input placeholder="password" style="width:420px;height:40px;" type="password"><br>
-						<span style="font-size: 18px;">确认密码</span><br>
-							<input placeholder="password" style="width:420px;height:40px;" type="password"> 
-						<label class="checkbox" ><input type="checkbox"> 勾选同意 </label>
-						<button class="btn btn-primary"  style="width:430px;height:50px;" type="submit">提交</button>
+							<form:input path="userPassword" placeholder="password" style="width:420px;height:40px;" type="password"/>
+							<form:errors path="userPassword" cssStyle="color:red"/>
+							<br>
+						<span style="font-size:18px;">确认密码</span><br>
+							<input name="password" placeholder="password" style="width:420px;height:40px;" type="password"> 
+						<label class="checkbox" ><input type="checkbox" checked> 直接登录 </label> <br>
+						<button id="submit" class="btn btn-primary"  style="width:430px;height:50px;" type="submit">提交</button>
 						</legend></fieldset>
-					</form>
+					</form:form>
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>	
@@ -91,7 +99,7 @@
 		</div>
 	</div>
 </div>
-	
+
 	
 </body>
 </html>

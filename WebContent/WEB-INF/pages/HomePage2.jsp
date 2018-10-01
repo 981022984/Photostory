@@ -21,9 +21,11 @@
 	<link rel="shortcut icon" href="img/favicon.png">
 	<script type="text/javascript" src="./js/json2.js"></script>
 	<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+	
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<![endif]-->
+	
 	<script type="text/javascript" src="./layoutit/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./layoutit/jquery-ui.js"></script>
 	<script type="text/javascript" src="./layoutit/jquery.ui.touch-punch.min.js"></script>
@@ -35,8 +37,8 @@
 	
 	<!-- 网络包 -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-   	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 <form:form action="userComment" method="post">
@@ -49,11 +51,12 @@
 				<div class="navbar-inner">
 					<div class="container-fluid">
 						<em><a class="brand" href="#">PhotoStory</a></em>
-					<div class="nav-collapse collapse navbar-responsive-collapse">
+					<div>
 						<ul class="nav pull-right" >
 							<li>
 								<ul>
-									<a class="btn" href="#">注册</a>
+									<a class="btn btn-primary" href="/PhotoStory/register">注册</a>
+									<a class="btn btn-primary" href="/PhotoStory/userInfo">个人信息</a>
 								</ul>
 							</li>
 						</ul>
@@ -456,7 +459,7 @@ $(document).ready(function(){
 				data :{"currentPage":pageNo},      /* 发送到服务器的数据 */
 				async : true,                      /* 异步处理 */
 				success :function(data){
-					for(var i=0;i<9;i++){
+					for(var i=0;i<9;i++){     /* 更换新的值  */
 						$("#photo"+(i+1)).find("img").attr("src",data[i].psrc);
 						$("#photo"+(i+1)).find("h3").html(data[i].pname);
 						$("#photo"+(i+1)).find("h3").next().html(data[i].pstory); 

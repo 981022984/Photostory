@@ -13,6 +13,13 @@
         <result property="pcomment" column="pcomment"/>
     </resultMap>
     
+    <resultMap id="photos2" type="com.photostory.entity.Photos">
+        <id property="pno" column="pno"/>
+        <result property="pname" column="pname"/>
+        <result property="ptime" column="ptime"/>
+        <result property="pcomment" column="pcomment"/>
+    </resultMap>
+    
     <!-- 查询所有的记录并缓存 --> 
     <select id="getAllPhotos" resultType="int">
        select count(pno) from photos
@@ -26,6 +33,10 @@
     <update id="goodPhoto">
         update photos set pcomment=#{pcomment} where pno=#{pno}
     </update>
+    
+    <select id="getUserPhotos" parameterType="String" resultMap="photos2">
+        select pno,pname,ptime,pcomment from photos where userID=#{userID} order by ptime desc
+    </select>
 </mapper>
 
 

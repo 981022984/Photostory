@@ -36,6 +36,13 @@ public interface PhotosDao {
 	 * @return 受影响记录条数
 	 */
 	public int goodPhoto(@Param("pcomment")String pcomment ,@Param("pno")String pno);
+	
+	/**
+	 * 获取某一个用户上传的图片
+	 * @param userID 用户ID
+	 * @return 该ID用户上传的图片
+	 */
+	public ArrayList<Photos> getUserPhotos(String userID);
 }
 
 
