@@ -44,6 +44,15 @@
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    	<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+   	
+   	<style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }      
+    </style>
+   	
 </head>
 <body>
 	
@@ -56,7 +65,6 @@
 						<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse"></a> <em><a class="brand" href="#">PhotoStory</a></em>
 						<div class="nav-collapse collapse navbar-responsive-collapse">
 						</div>
-						
 					</div>
 				</div>
 				
@@ -66,8 +74,8 @@
 	<div class="row-fluid">
 		<div class="span3">
 			<div id="select" class="hero-unit well">
-				<h3>
-					Hello, world!
+				<h3 id="userName">
+					Hello, ${User.userName}
 				</h3>
 				<p>
 					<a id="p" class="btn btn-primary btn-large" href="#UserPhotos">我的图片</a>
@@ -95,19 +103,19 @@
 			<div id="ChangePassword" style="display:none;">
 				<form class="form-horizontal">
 					<div class="control-group"><label class="control-label" for="inputEmail">旧密码</label>					
-						<div class="controls"><input id="inputEmail" style="width:320px;height:40px;" placeholder="Old Password" type="password" /></div>
+						<div class="controls"><input id="OldPassword" name="oldPassword" style="width:320px;height:40px;" placeholder="Old Password" type="password" /></div>
 					</div>
 					
 					<div class="control-group"><label class="control-label" for="inputPassword">新密码</label>					
-						<div class="controls"><input id="inputPassword" style="width:320px;height:40px;" placeholder="New Password" type="password" /></div>
+						<div class="controls"><input id="NewPassword1" name="newPassword1" style="width:320px;height:40px;" placeholder="New Password" type="password" /></div>
 					</div>
 					
 					<div class="control-group"><label class="control-label" for="inputPassword">确认密码</label>					
-						<div class="controls"><input id="inputPassword" style="width:320px;height:40px;" placeholder="New Password" type="password" /></div>
+						<div class="controls"><input id="NewPassword2" name="newPassword2" style="width:320px;height:40px;" placeholder="New Password" type="password" /></div>
 					</div>
 					
 					<div class="control-group">
-						<div class="controls"><button class="btn btn-primary" type="submit">确认修改</button></div>
+						<div class="controls"><button id="btn1" class="btn btn-primary" >确认修改</button></div>
 					</div>
 				</form>
 			</div>
@@ -116,11 +124,11 @@
 			<div id="ChangeUserName" style="display:none;">
 				<form class="form-horizontal">
 					<div class="control-group"><label class="control-label" for="inputUserName">新用户名</label>				
-						<div class="controls"><input id="inputUserName" style="width:320px;height:40px;" placeholder="UserName" type="text" /></div>
+						<div class="controls"><input id="newUserName" name="newUserName" style="width:320px;height:40px;" placeholder="UserName" type="text" /></div>
 					</div>
 										
 					<div class="control-group">
-						<div class="controls"><button class="btn btn-primary" type="submit">确认修改</button></div>
+						<div class="controls"><button id="btn2" class="btn btn-primary">确认修改</button></div>
 					</div>
 				</form>
 			</div>
@@ -155,9 +163,46 @@
 			</div>
 			
 			
+			<div id="UploadPhotos" style="display:none;">
+				 <form action="uploadPhotos" method="post" enctype="multipart/form-data">				 	
+					<fieldset>
+						<legend>上传图片</legend>
+                    	<span class="help-block">只能上传10M以下的JPG格式图片</span>
+                    	<span>图片名称：<input type="text" name="PhotoName" style="width:320px;height:40px;"></span>                
+                    	<div id="ptype" class="btn-group">
+                  			<button id="type" name="type" class="btn" value="123" disabled="disabled">动漫图片</button>
+                  			<input id="uptype" type="hidden" name="type" value="动漫图片"/>
+                  			<button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
+                  			<ul class="dropdown-menu">
+                    			<li><a id="tp" class="btn" href="#this">动漫图片</a></li>
+			                    <li><a id="tp" class="btn" href="#this">瞬间感动</a></li>
+			                    <li><a id="tp" class="btn" href="#this">神奇事件</a></li>
+			                    <li><a id="tp" class="btn" href="#this">房屋装修</a></li>
+			                    <li><a id="tp" class="btn" href="#this">天气气象</a></li>
+			                    <li><a id="tp" class="btn" href="#this">搞笑图片</a></li>
+			                    <li><a id="tp" class="btn" href="#this">网络游戏</a></li>			              
+                  			</ul>
+                		</div>	   
+                		
+                		<br/>             	
+                		<br/>
+                    	<span>图片故事：<textarea name="PhotoStory" style="width:320px;height:90px;"></textarea></span>	
+                    	<br/>             	
+                		<br/>					
+                    	<div>                   
+       				    	<span class="btn btn-success fileinput-button">       				    	
+       				    	<label><input type="file" name="photo" style="width:300px;height:40px;font:STSong;"></label>
+            				<span><button id="btn3" type="submit" class="btn btn-primary">上传</button></span>
+        					</span>
+    					</div>		
+					</fieldset>
+				</form>		
+			</div>
+			
 	</div>
 </div>
 
+<!-- 切换界面显示 -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		var div1 = $("#UserPhotos");      //用户图片
@@ -172,7 +217,7 @@
 			var i = 1;
 			if(str == "我的图片")i = 1;
 			
-			else if(str == "用户信息")i = 2;
+			else if(str == "我的消息")i = 2;
 			
 			else if(str == "修改密码")i = 3;
 			
@@ -188,6 +233,63 @@
 		});
 		
 	});	
+</script>
+
+<!-- 修改密码、用户名 -->
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#ChangePassword #btn1").click(function ChangePassword(){        	//修改密码 	
+		var oldPassword = $("#OldPassword").val();             //旧密码 
+		var newPassword1 = $("#NewPassword1").val();               /* 新密码 */
+		var newPassword2 = $("#NewPassword2").val(); 
+		$.ajax({
+			url:"${pageContext.request.contextPath}/uploadPassword",
+			dataType:"json",
+			type:"post",
+			contenType:"application/text",
+			data:{"oldPassword":oldPassword,"newPassword1":newPassword1,"newPassword2":newPassword2},
+			async:false,
+			success: function(data){
+				alert(data.news);
+				if(data.news != "修改密码成功！"){}					
+			},
+			error: function(){
+				alert("系统正忙！");
+			}
+		});
+	});
+	
+	
+	/* 修改用户名  */
+	$("#ChangeUserName #btn2").click(function ChangeUserName(){
+		var newUserName = $("#newUserName").val();
+		$.ajax({
+			url:"${pageContext.request.contextPath}/uploadUserName", 
+			dataType:"json",
+			type:"post",
+			contenType:"application/text",
+			data:{"newUserName":newUserName},
+			async:false,
+			success: function(data){
+				alert("修改成功！");	
+				$("#userName").html(data.newUserName);
+			},
+			error: function(){
+				alert("系统正忙！");
+			}
+		});
+	});
+	
+	
+	/* 选择图片类型  */
+	$("[href='#this']").click(function dothis(){
+		var type = $(this).text();
+		$("#ptype #type").html(type);
+		$("#ptype #uptype").val(type);
+	});
+	
+});
 </script>
 
 </body>

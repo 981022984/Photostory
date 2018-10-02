@@ -23,4 +23,18 @@ public interface TempPhotosDao {
 	 * @return 所有临时图片
 	 */
 	public ArrayList<Tphotos> getAllTempPhotos2();
+	
+	
+	/**
+	 * 查询最后一张图片编号
+	 * @return  图片编号
+	 */
+	public String getLastPno();
+	
+	/**
+	 * 用户上传待审核图片
+	 * @param tp  临时图片
+	 * @return  插入记录条数
+	 */
+	public void uploadPhotos(Tphotos tp);
 }

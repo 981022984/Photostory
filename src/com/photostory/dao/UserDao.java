@@ -36,4 +36,36 @@ public interface UserDao {
 	 * @return 插入记录的条数
 	 */
 	public int addNewUser(@Param("userID")String userID, @Param("userPassword")String userPassword);
+	
+	/**
+	 * 修改密码
+	 * @param newPassword 新密码
+	 * @param userID  要修改密码的用户ID
+	 * @return 更新的记录条数
+	 */
+	public int updatePassword(@Param("newPassword") String newPassword, @Param("userID")String userID);
+	
+	
+	/**
+	 * 修改用户名
+	 * @param userID          要修改用户名的用户的ID
+	 * @param newUserName     新的用户名
+	 * @return                更新记录数
+	 */
+	public int updateUserName(@Param("userID")String userID, @Param("newUserName")String newUserName);
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

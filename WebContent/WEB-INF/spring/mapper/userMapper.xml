@@ -23,4 +23,28 @@
 	<insert id="addNewUser">
 	    insert into user(userID,userPassword) value(#{userID},#{userPassword}) 
 	</insert>
+	
+	<!-- 修改密码 -->
+	<update id="updatePassword">
+	    update user 
+	    <set> 
+  		    userPassword=#{newPassword}
+  		</set>
+  		where userID=#{userID}
+	</update>
+	
+	<!-- 修改用户名 -->
+	<update id="updateUserName">
+	    update user
+	    <set>
+	        userName=#{newUserName}
+	    </set>
+	    where userID=#{userID}
+	</update>
 </mapper>
+
+
+
+
+
+

@@ -395,6 +395,7 @@
 	</div>
 </div>
 </form:form>
+
 <script type="text/javascript">    //翻页效果，局部刷新 
 $(document).ready(function(){
 	var firstPageNo = $("#pages li:first-child").text();     //首页

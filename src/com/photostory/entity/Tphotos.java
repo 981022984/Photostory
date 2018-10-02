@@ -1,6 +1,7 @@
 package com.photostory.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 /**
  * @author zuo
@@ -10,18 +11,38 @@ import java.util.Date;
  */
 public class Tphotos {
 	private String pno;
-	private Date ptime;
+	private Timestamp ptime;
 	private String userID;
 	private String pname;
 	private String path;
 	private String pstory;
 	private String psrc;  //页面使用的路径
+	private String ptype;
 	
 
 	public Tphotos() {
 		
 	}
 	
+	public Tphotos(String pno, String userID,String pname, Timestamp ptime, 
+			String pstory, String path, String ptype) {
+		this.pno = pno;
+		this.userID = userID;
+		this.pname = pname;
+		this.ptime = ptime;
+		this.pstory = pstory;
+		this.path = path;
+		this.ptype = ptype;
+	}
+	
+	public String getPtype() {
+		return ptype;
+	}
+
+	public void setPtype(String ptype) {
+		this.ptype = ptype;
+	}
+
 	public String getPsrc() {
 		return psrc;
 	}
@@ -38,11 +59,11 @@ public class Tphotos {
 		this.pno = pno;
 	}
 
-	public Date getPtime() {
+	public Timestamp getPtime() {
 		return ptime;
 	}
 
-	public void setPtime(Date ptime) {
+	public void setPtime(Timestamp ptime) {
 		this.ptime = ptime;
 	}
 

@@ -27,6 +27,17 @@
     <select id="getAllTempPhotos2" resultMap="tphotos2">
         select pno,userID,path,pname,pstory from tphotos
     </select>
+    
+    <!-- 查询最后一张图片的编号 -->
+    <select id="getLastPno" resultType="String">
+        select pno from tphotos order by pno DESC limit 1;
+    </select>
+    
+    <!-- 用户上传待审核图片 -->
+    <select id="uploadPhotos" parameterType="com.photostory.entity.Tphotos">
+        insert into tphotos(pno,userID,pname,ptime,pstory,path,ptype)
+        value(#{pno},#{userID},#{pname},#{ptime},#{pstory},#{path},#{ptype})
+    </select>
 </mapper>
 
 

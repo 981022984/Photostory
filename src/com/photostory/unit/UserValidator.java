@@ -41,7 +41,7 @@ public class UserValidator implements Validator{
 		}
 		else{
 			for(char c:userID) {    
-				if((c>'A' && c<'Z') || (c>'a' && c<'z') || (c>'0' && c<'9'))   //用户名为数字或字符
+				if((c>='A' && c<='Z') || (c>='a' && c<='z') || (c>='0' && c<='9'))   //用户名为数字或字符
 					continue;
 				else {
 					errors.rejectValue("userID", null, "只能为数字、字母");break;
