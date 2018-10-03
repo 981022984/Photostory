@@ -37,13 +37,13 @@
 	
 	<!-- 网络包 -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-   	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   	<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
 </head>
 <body>
-<form:form action="userComment" method="post">
+<form action="/PhotoStory/comment" method="post">
 <div class="container-fluid">
-	
+	 
 	<div class="row-fluid">
 	<div class="row-fluid">
 	<div class="span12">
@@ -157,9 +157,10 @@
 								${photos[0].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[0].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[0].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[0].pcomment}</span></a>
+								 <input hidden="hidden" name="p0" value="${photos[0].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -175,9 +176,10 @@
 								${photos[1].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[1].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[1].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[1].pcomment}</span></a>
+								 <input hidden="hidden" name="p1" value="${photos[1].pno}"/>								 
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -193,9 +195,10 @@
 								${photos[2].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[2].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[2].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[2].pcomment}</span></a>
+								 <input hidden="hidden" name="p2" value="${photos[2].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -213,9 +216,10 @@
 								${photos[3].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[3].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[3].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[3].pcomment}</span></a>
+								 <input hidden="hidden" name="p3" value="${photos[3].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -231,9 +235,10 @@
 								${photos[4].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[4].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[4].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[4].pcomment}</span></a>
+								 <input hidden="hidden" name="p4" value="${photos[4].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>>
 							</p>
 						</div>
 					</div>
@@ -249,9 +254,10 @@
 								${photos[5].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[5].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[5].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[5].pcomment}</span></a>
+								 <input hidden="hidden" name="p5" value="${photos[5].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -269,9 +275,10 @@
 								${photos[6].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[6].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[6].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[6].pcomment}</span></a>
+								 <input hidden="hidden" name="p6" value="${photos[6].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -287,9 +294,10 @@
 								${photos[7].pstory}
 							</p>
 							<p>
-								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[7].pcomment}</span></a>
-								 <input hidden="hidden" value="${photos[7].pno}"/>
-								 <a class="btn" href="#">评论</a>
+								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
+								 <span class="badge badge-success">${photos[7].pcomment}</span></a>
+								 <input hidden="hidden" name="p7" value="${photos[7].pno}"/>
+								 <a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -307,8 +315,8 @@
 							<p>
 								<a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[8].pcomment}</span>
 								</a>
-								<input hidden="hidden" value="${photos[8].pno}"/>								  
-								<a class="btn" href="#">评论</a>
+								<input hidden="hidden" name="p8" value="${photos[8].pno}"/>								  
+								<a class="btn" id="comm" href="#">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -394,10 +402,12 @@
 		</div>
 	</div>
 </div>
-</form:form>
+</form>
 
-<script type="text/javascript">    //翻页效果，局部刷新 
+<script type="text/javascript">    //翻页效果，局部刷新
+
 $(document).ready(function(){
+	
 	var firstPageNo = $("#pages li:first-child").text();     //首页
 	var lastPageNo = $("#pages li:last-child").text();       //尾页
 	var pageNo = firstPageNo;            //默认首页 
@@ -500,7 +510,15 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
+		/* 查看评论  */
+		$("#newPhotos #comm").click(function link(){
+			var pno = $(this).prev().val();
+			$(this).attr("href","comment?pno="+pno);
+			
+		});
 	});
+	
 </script>
   </body>
 </html>

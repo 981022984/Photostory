@@ -37,6 +37,10 @@
     <select id="getUserPhotos" parameterType="String" resultMap="photos2">
         select pno,pname,ptime,pcomment from photos where userID=#{userID} order by ptime desc
     </select>
+    
+    <select id="getPhoto" parameterType="String" resultType="com.photostory.entity.Photos">
+    	select * from photos where pno=#{pno};    
+    </select>
 </mapper>
 
 

@@ -13,8 +13,13 @@ import com.photostory.entity.Commend;
 public interface CommendDao {
 	
 	/**
-	 * @param pno
+	 * @param pno   图片编号
 	 * @return 图片所有评论集合
 	 */
 	public ArrayList<Commend> getCommends(String pno);
+	
+	/**
+	 * @param commend 要插入的评论信息
+	 */
+	public void addCommend(Commend commend);
 }

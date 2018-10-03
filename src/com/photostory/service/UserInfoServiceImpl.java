@@ -13,12 +13,15 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.photostory.dao.CommendDao;
 import com.photostory.dao.PhotosDao;
 import com.photostory.dao.TempPhotosDao;
 import com.photostory.dao.UserDao;
+import com.photostory.entity.Commend;
 import com.photostory.entity.Photos;
 import com.photostory.entity.Tphotos;
 import com.photostory.entity.User;
+import com.photostory.unit.DealwithPhotos;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService{
@@ -30,6 +33,9 @@ public class UserInfoServiceImpl implements UserInfoService{
 	
 	@Resource
 	private TempPhotosDao tempPhotosCURD;
+	
+	@Resource
+	private CommendDao commendCURD;
 	
 	/**
 	 * 获取用户上传的图片
@@ -130,9 +136,57 @@ public class UserInfoServiceImpl implements UserInfoService{
 	}
 	
 	
+	/**
+	 * @param tp  要上传的临时文件对象
+	 */
 	@Override
 	public void insertPhotos(Tphotos tp) {
 		tempPhotosCURD.uploadPhotos(tp);
+	}
+	
+	
+	/**
+	 * 获取对应图片
+	 * @param pno  要获取图片的编号
+ 	 * @return     要获取图片
+	 */
+	@Override
+	public Photos getPhoto(String pno) {
+		Photos photo = photosCURD.getPhoto(pno);
+		String src = TempPhotosServiceImpl.class.getClassLoader().getResource("../../").getPath();
+		src = src + photo.getPath(); 
+		/*缩放后图片存储路径（相对），将存放路径中的image文件夹改为pagePhotos*/
+		String dest = src.replace("image", "pagePhotos2");  
+		try {
+			/*工具类中图片缩放*/
+			DealwithPhotos.resize(src, dest, 550, 420, true);    			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		/*截取图片后面固定的31位作为页面引用图片的路径*/
+		String pstr = dest.substring(dest.length()-32,dest.length());
+		photo.setPsrc(pstr);
+		return photo;
+	}
+	
+	
+	/**
+	 * 获取对应图片的所有评论
+	 * @param pno	要获取图片评论的图片的编号
+	 * @return		要获取的评论集合
+	 */
+	@Override
+	public ArrayList<Commend> getCommends(String pno){
+		ArrayList<Commend> commends= commendCURD.getCommends(pno);
+		return commends;
+	}
+	
+	/**
+	 * @param commend  要插入的评论信息
+	 */
+	@Override
+	public void addCommend(Commend commend) {
+		commendCURD.addCommend(commend);
 	}
 }
 

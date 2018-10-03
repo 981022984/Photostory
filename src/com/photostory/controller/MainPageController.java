@@ -1,7 +1,6 @@
 package com.photostory.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -70,14 +67,12 @@ public class MainPageController {
 	 * @param HttpServeletRequest 页面请求数据
 	 * @param Model 要传送到界面的模型
 	 * @param HttpServletResponse 响应异步请求数据
-	 * @throws IOException 
-	 * @throws JsonMappingException 
-	 * @throws JsonGenerationException 
+	 * @throws IOException  
 	 */
 	@ResponseBody
 	@RequestMapping(value="/newPhotos")
 	public void getPagePhotos(HttpServletRequest request, Model model, HttpServletResponse response) 
-			throws JsonGenerationException, JsonMappingException, IOException {
+			throws IOException {
 		
 		String currentPage = request.getParameter("currentPage");   //获取当前页数
 		int pageNo = Integer.parseInt(currentPage);

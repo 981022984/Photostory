@@ -43,6 +43,12 @@ public interface PhotosDao {
 	 * @return 该ID用户上传的图片
 	 */
 	public ArrayList<Photos> getUserPhotos(String userID);
+	
+	/**
+	 * @param pno 要获取的图片的编号
+	 * @return    要获取的图片
+	 */
+	public Photos getPhoto(String pno);
 }
 
 

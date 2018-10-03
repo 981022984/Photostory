@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.photostory.entity.Commend;
 import com.photostory.entity.Photos;
 import com.photostory.entity.Tphotos;
 
@@ -54,9 +55,30 @@ public interface UserInfoService {
 	
 	/**
 	 * @param tp  要上传的临时文件对象
-	 * @return    是否上传成功
 	 */
 	public void insertPhotos(Tphotos tp);
+	
+	
+	/**
+	 * 获取对应图片
+	 * @param pno  要获取图片的编号
+ 	 * @return     要获取图片
+	 */
+	public Photos getPhoto(String pno);
+	
+	
+	/**
+	 * 获取对应图片的所有评论
+	 * @param pno	要获取图片评论的图片的编号
+	 * @return		要获取的评论集合
+	 */
+	public ArrayList<Commend> getCommends(String pno);
+	
+	
+	/**
+	 * @param commend  要插入的评论信息
+	 */
+	public void addCommend(Commend commend);
 }
 
 

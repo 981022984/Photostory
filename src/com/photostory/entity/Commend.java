@@ -1,6 +1,6 @@
 package com.photostory.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 用户对图片评论实体
@@ -11,7 +11,7 @@ import java.util.Date;
 public class Commend {
 	private String pno;       //被评论图片编号
 	private String userID;    //评论用户ID
-	private Date commTime;    //评论时间
+	private Timestamp commTime;    //评论时间
 	private String comm;      //评论的内容
 	private int goodComm;     //评论点赞人数
 	private String uName;      //评论人姓名
@@ -19,7 +19,13 @@ public class Commend {
 	public Commend() {
 		
 	}
-
+	
+	public Commend(String pno, String userID, Timestamp commTime, String comm) {
+		this.pno = pno;
+		this.userID = userID;
+		this.commTime = commTime;
+		this.comm = comm;
+	}
 
 	public String getuName() {
 		return uName;
@@ -47,11 +53,11 @@ public class Commend {
 		this.userID = userID;
 	}
 
-	public Date getCommTime() {
+	public Timestamp getCommTime() {
 		return commTime;
 	}
 
-	public void setCommTime(Date commTime) {
+	public void setCommTime(Timestamp commTime) {
 		this.commTime = commTime;
 	}
 

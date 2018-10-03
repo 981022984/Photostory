@@ -128,7 +128,7 @@ public class UserInfoController {
 		Date d = new Date();		                     //图片上传时间
 		Timestamp timeStamep = new Timestamp(d.getTime());
 		System.out.println(timeStamep);
-		userInfoService.insertPhotos(new Tphotos(list.get(1),"1415241",pname, timeStamep, pstory, list.get(0), ptype));
+		userInfoService.insertPhotos(new Tphotos(list.get(1),"1415241",pname, timeStamep, pstory, list.get(0), ptype));   //模拟上传图片信息
 	}	
 }
 

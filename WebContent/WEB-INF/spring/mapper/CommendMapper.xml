@@ -8,6 +8,7 @@
         <result property="pno" column="pno"/>
         <result property="userID" column="userID"/>
         <result property="comm" column="comm"/>
+        <result property="commTime" column="commTime"/>
         <result property="goodComm" column="goodComm"/>
         <association property="uName" javaType="String">   		
     		<result property="userName" column="userName"/>    
@@ -17,17 +18,22 @@
     <select id="getCommends" parameterType="String" resultMap="commend">
         select
         	comm.pno,
-        	comm.userID,
+        	comm.commTime,
         	comm.comm,
         	comm.goodComm,
         	user.userName
         from commend comm left outer join user user on comm.userID =  user.userID
-        where pno=#{pno}	 
+        where pno=#{pno} order by commTime ASC	 
     </select>
     
     <select id="getAllCommends" parameterType="String" resultType="com.photostory.entity.Commend">
         select * from commend
     </select>
+    
+    <insert id="addCommend" parameterType="com.photostory.entity.Commend">
+        insert into commend(pno, userID, commTime, comm) 
+        value(#{pno}, #{userID}, #{commTime}, #{comm})
+    </insert>
 </mapper>
 
 
