@@ -41,6 +41,11 @@
 	    </set>
 	    where userID=#{userID}
 	</update>
+	
+	<!-- 更新信息后获取新的用户信息 -->
+	<select id="getUser" parameterType="string" resultMap="user">
+	    select * from user where userID=#{userID}
+	</select>
 </mapper>
 
 

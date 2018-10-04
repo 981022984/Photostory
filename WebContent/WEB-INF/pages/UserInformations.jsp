@@ -42,8 +42,8 @@
 	
 	<!-- 网络包 -->
 	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-   	<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   	<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
    	
    	<style>
         .fileinput-button {
@@ -55,14 +55,14 @@
    	
 </head>
 <body>
-	
 	<div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
 					<div class="container-fluid">
-						<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse"></a> <em><a class="brand" href="#">PhotoStory</a></em>
+						<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse"></a> 
+						<em><a class="brand" href="/PhotoStory/dealwithPhotos">PhotoStory</a></em>
 						<div class="nav-collapse collapse navbar-responsive-collapse">
 						</div>
 					</div>
@@ -115,7 +115,10 @@
 					</div>
 					
 					<div class="control-group">
-						<div class="controls"><button id="btn1" class="btn btn-primary" >确认修改</button></div>
+						<div class="controls">
+							<input type="hidden" name="ID" value="${User.userID}"/>
+							<button id="btn1" class="btn btn-primary" >确认修改</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -128,7 +131,10 @@
 					</div>
 										
 					<div class="control-group">
-						<div class="controls"><button id="btn2" class="btn btn-primary">确认修改</button></div>
+						<div class="controls">
+							<input type="hidden" name="ID" value="${User.userID}"/>
+							<button id="btn2" class="btn btn-primary">确认修改</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -187,6 +193,7 @@
                 		<br/>             	
                 		<br/>
                     	<span>图片故事：<textarea name="PhotoStory" style="width:320px;height:90px;"></textarea></span>	
+                    	<input hidden="hidden" name="userNo" value="${User.userID}"/>        
                     	<br/>             	
                 		<br/>					
                     	<div>                   
@@ -198,7 +205,7 @@
 					</fieldset>
 				</form>		
 			</div>
-			
+		</div>
 	</div>
 </div>
 
@@ -243,12 +250,13 @@ $(document).ready(function(){
 		var oldPassword = $("#OldPassword").val();             //旧密码 
 		var newPassword1 = $("#NewPassword1").val();               /* 新密码 */
 		var newPassword2 = $("#NewPassword2").val(); 
+		var userID = $(this).prev().val();
 		$.ajax({
 			url:"${pageContext.request.contextPath}/uploadPassword",
 			dataType:"json",
 			type:"post",
 			contenType:"application/text",
-			data:{"oldPassword":oldPassword,"newPassword1":newPassword1,"newPassword2":newPassword2},
+			data:{"ID":userID,"oldPassword":oldPassword,"newPassword1":newPassword1,"newPassword2":newPassword2},
 			async:false,
 			success: function(data){
 				alert(data.news);
@@ -264,16 +272,17 @@ $(document).ready(function(){
 	/* 修改用户名  */
 	$("#ChangeUserName #btn2").click(function ChangeUserName(){
 		var newUserName = $("#newUserName").val();
+		var userID = $(this).prev().val();
 		$.ajax({
 			url:"${pageContext.request.contextPath}/uploadUserName", 
 			dataType:"json",
 			type:"post",
 			contenType:"application/text",
-			data:{"newUserName":newUserName},
-			async:false,
+			data:{"ID":userID,"newUserName":newUserName},
+			async:true,
 			success: function(data){
 				alert("修改成功！");	
-				$("#userName").html(data.newUserName);
+				$("#userName").html("Hello,"+data.newUserName);
 			},
 			error: function(){
 				alert("系统正忙！");

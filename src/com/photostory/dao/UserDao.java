@@ -54,6 +54,13 @@ public interface UserDao {
 	 */
 	public int updateUserName(@Param("userID")String userID, @Param("newUserName")String newUserName);
 	
+	
+	/**
+	 * 查找新的用户信息
+	 * @param userID  要查找用户的ID
+	 * @return 查找到的新的用户信息
+	 */
+	public User getUser(String userID);
 }
 
 

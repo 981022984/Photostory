@@ -2,6 +2,8 @@ package com.photostory.controller;
 
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +27,12 @@ public class LoginController {
 	
 
 	/**
+	 * 初始请求接收，返回登录界面（返回部分路径，完全路径要由配置文件解析得到）
 	 * @param model
 	 * @return String
-	 * 初始请求接收，返回登录界面（返回部分路径，完全路径要由配置文件解析得到）
 	 */
 	@RequestMapping(value = "/firstLogin")
 	public String loginFirst(Model model) {
-		System.out.println(LoginController.class.getClassLoader().getResource("../../").getPath());
 		model.addAttribute("User", new User());
 		return "/login";
 	}
@@ -42,19 +43,13 @@ public class LoginController {
 	 * 登录请求处理，登录成功则返回处理控制
 	 */
 	@RequestMapping(value = "/validateLogin")
-	public String validateLogin(@ModelAttribute("User") User user,Model model) {
-		if(loginService.validateLogin(user.getUserID(), user.getUserPassword())) {
+	public String validateLogin(@ModelAttribute("User") User user,Model model,HttpSession session) {
+		user = loginService.validateLogin(user.getUserID(), user.getUserPassword());
+		if(user != null) {
 			//登录成功
-			/*try {
-				BufferedImage bufferedImage = ImageIO.read(new FileInputStream("./p1.jpg"));   //从文件中读取图片
-				model.addAttribute("image1",bufferedImage);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			
+			session.setAttribute(user.getUserID(), user);      //保存已登录的用户的ID
 			model.addAttribute("User",user);
-			return "redirect:dealwithPhotos";
+			return "redirect:dealwithPhotos?userID="+user.getUserID();
 		}	
 		else {
 			System.out.println("未找到");

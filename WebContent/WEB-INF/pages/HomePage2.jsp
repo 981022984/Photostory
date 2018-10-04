@@ -55,8 +55,9 @@
 						<ul class="nav pull-right" >
 							<li>
 								<ul>
+									<a class="btn btn-primary" href="/PhotoStory/firstLogin">登录</a>
 									<a class="btn btn-primary" href="/PhotoStory/register">注册</a>
-									<a class="btn btn-primary" href="/PhotoStory/userInfo">个人信息</a>
+									<a class="btn btn-primary" href="/PhotoStory/userInfo?userID=${User.userID}">个人信息</a>
 								</ul>
 							</li>
 						</ul>
@@ -160,7 +161,7 @@
 								 <a id="zan" class="btn btn-primary" href="#this">赞&nbsp;
 								 <span class="badge badge-success">${photos[0].pcomment}</span></a>
 								 <input hidden="hidden" name="p0" value="${photos[0].pno}"/>
-								 <a class="btn" id="comm" href="#">查看评论</a>
+								 <a class="btn" id="comm" href="/PhotoStory/comment?userID=${User.userID}">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -316,7 +317,7 @@
 								<a id="zan" class="btn btn-primary" href="#this">赞&nbsp;<span class="badge badge-success">${photos[8].pcomment}</span>
 								</a>
 								<input hidden="hidden" name="p8" value="${photos[8].pno}"/>								  
-								<a class="btn" id="comm" href="#">查看评论</a>
+								<a class="btn" id="comm" href="">查看评论</a>
 							</p>
 						</div>
 					</div>
@@ -514,8 +515,9 @@ $(document).ready(function(){
 		/* 查看评论  */
 		$("#newPhotos #comm").click(function link(){
 			var pno = $(this).prev().val();
-			$(this).attr("href","comment?pno="+pno);
-			
+			var href = $(this).attr("href");
+			alert(href);
+			$(this).attr("href",href+"&pno="+pno);
 		});
 	});
 	

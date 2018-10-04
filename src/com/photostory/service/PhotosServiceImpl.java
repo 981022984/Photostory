@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.photostory.dao.PhotosDao;
 import com.photostory.entity.Page;
 import com.photostory.entity.Photos;
-import com.photostory.entity.Tphotos;
 import com.photostory.unit.DealwithPhotos;
 
 /**
@@ -61,6 +60,7 @@ public class PhotosServiceImpl implements PhotosService{
 		}
 		return destPhotos;
 	}
+	
 
 	/* (non-Javadoc)
 	 * @see com.photostory.service.PhotosService#getAllPhotosCount()
@@ -87,7 +87,6 @@ public class PhotosServiceImpl implements PhotosService{
 	public int addGoodPhoto(String pcomment, String pno) {
 		int count = Integer.parseInt(pcomment) + 1;
 		int k = photosCURD.goodPhoto(""+count, pno);
-		System.out.println("++++"+k);
 		return count;
 	}
 }

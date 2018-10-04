@@ -18,7 +18,7 @@ public class Tphotos {
 	private String pstory;
 	private String psrc;  //页面使用的路径
 	private String ptype;
-	
+	private String userName;  //上传图片用户名称
 
 	public Tphotos() {
 		
@@ -35,6 +35,15 @@ public class Tphotos {
 		this.ptype = ptype;
 	}
 	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public String getPtype() {
 		return ptype;
 	}

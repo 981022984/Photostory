@@ -1,5 +1,6 @@
 package com.photostory.service;
 
+import com.photostory.entity.User;
 
 /**
  * 登录Service接口
@@ -12,5 +13,5 @@ public interface LoginService {
 	/**
 	 * 验证登录
 	 */
-	boolean validateLogin(String userID, String userPassword);
+	User validateLogin(String userID, String userPassword);
 }

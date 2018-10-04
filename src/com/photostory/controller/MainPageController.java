@@ -53,15 +53,20 @@ public class MainPageController {
 	 * @return String 首页路径（需解析）
 	 */
 	@RequestMapping(value="/dealwithPhotos")
-	public String getHomePage(@ModelAttribute("User") User user, Model model) {
+	public String getHomePage(@ModelAttribute("User") User user, Model model, 
+			HttpSession session, HttpServletRequest request) {
 		//model.addAttribute("",); 
+		user = (User) session.getAttribute(request.getParameter("userID"));
+		/*System.out.println("-------"+user.getUserID());*/
 		Page page = new Page();  //新的页
 		int pages = photosService.getAllPhotosCount();             //总页数
 		ArrayList<Photos> photos = photosService.getPhotos(page);  //首页中所有图片
 		model.addAttribute("pages",pages);
 		model.addAttribute("photos",photos);
+		model.addAttribute("user",user);
 		return "HomePage2";
 	}
+	
 	/**
 	 * 获取当前图片的页数
 	 * @param HttpServeletRequest 页面请求数据
@@ -76,9 +81,9 @@ public class MainPageController {
 		
 		String currentPage = request.getParameter("currentPage");   //获取当前页数
 		int pageNo = Integer.parseInt(currentPage);
-		System.out.println("----"+pageNo);
+		/*System.out.println("----"+pageNo);*/
 		Page page = new Page(pageNo);      //生成新的页
-		System.out.println("----"+page.getStartRow());
+		/*System.out.println("----"+page.getStartRow());*/
 		
 		ArrayList<Photos> photos = photosService.getPhotos(page);
 		ObjectMapper mapper = new ObjectMapper();
@@ -86,7 +91,7 @@ public class MainPageController {
 		
 		for(int i=0;i<=photos.size()-1;i++) {   
 			System.out.println(photos.get(i).getPcomment());
-			map.put(""+i, photos.get(i));
+			map.put(""+i, photos.get(i));    //新的页中的图片
 		}
 		System.out.println(map);
 		response.setContentType("text/html;charset=utf-8");
@@ -141,7 +146,7 @@ public class MainPageController {
 		}
 		else {		
 			String str = registerService.addUser(user.getUserID(), user.getUserPassword(), password);
-			return "redirect:dealwithPhotos";
+			return "redirect:dealwithPhotos?userID="+user.getUserID();
 		}
 	}
 	

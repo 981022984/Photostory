@@ -73,21 +73,19 @@
 			<div class="row-fluid">
 				<div class="span3">
 				</div>
-				<div class="span7">
-				
+				<div class="span7">				
 					<div class="row-fluid">
 					
 						<!-- 图片显示 -->
 						<div class="span6">
 							<img alt="320x450" src="${photo.psrc}" />
-						</div>
-						
+						</div>									
 						
 						<!-- 图片相关信息 -->
 						<div class="span6">
-							<ul>
+							<ul id="info">
 								<li><h3>图片名称：${photo.pname}</h3></li>
-								<li><h5>图片上传者：张三</h5></li>
+								<li><h5>图片上传者：${user1.userName}</h5></li>
 								<li><h5>图片上传时间：<fmt:formatDate value="${photo.ptime}" pattern="yyyy-MM-dd HH:mm:ss" /></h5></li>								
 								<li><h5>图片故事：${photo.pstory}</h5></li>
 								<li><h5>图片评赞：${photo.pcomment}</h5></li>
@@ -104,6 +102,7 @@
 					<!-- 显示评论 -->
 					<div class="row-fluid">
 						<div class="span12">
+						
 						<c:forEach items="${commends}" var="commend" varStatus="status">
 							<div class="feedbackItem">
 								<div class="feedbackListSubtitle">									
@@ -122,19 +121,16 @@
 								</div>
 							</div>			
 						</c:forEach>
-							
-							
-		
-							
+																													
 						</div>
 					</div>
+					
 					
 					<!-- 发表评论 -->
 					<div class="row-fluid">
 						<div class="span12">
 								
 							<div id="comment_nav"><span id="span_refresh_tips"></span>
-								<a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a>
 								<a href="#" onclick="return RefreshPage();">刷新页面</a>
 								<a href="#top">返回顶部</a>
 							</div>	
@@ -142,7 +138,7 @@
 							<div id="commentform_title">发表评论</div>
 							<span id="tip_comment" style="color:Red"></span>
 							<p>
-								昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="骑士心">
+								昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="${user2.userName}">
 							</p>
 							<div class="commentbox_main">
 								<div class="commentbox_title">
@@ -154,9 +150,10 @@
 							</div>
 							<br/>
 							<p id="commentbox_opt">
+								<input hidden="hidden" name="userID" value="${user2.userID}"/>						
 								<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+								<input hidden="hidden" name="pno" value="${photo.pno}"/>
 								<span id="span_comment_canceledit" style="display:none">
-								<a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
 							</p>
 						</div>
 					</div>
@@ -175,29 +172,29 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#btn_comment_submit").click(function Commendig(){
-			var commend = $("#tbCommentBody").val();
-			alert(commend);
-			
+			var commend = $("#tbCommentBody").val();//获取评论内容 
+			var userID = $(this).prev().val();   //获取评论用户的ID 
+			var pno = $(this).next().val();    //获取图片编号
+			var pcomment = $("#info li:eq(4)").children().text().slice(5); //获取图片评赞数 
 			$.ajax({
 				url:"${pageContext.request.contextPath}/submitComment",
 				dataType:"text",
 				type:"post",
 				contenType:"application/text",
-				data:{"commend":commend},
+				data:{"commend":commend,"userID":userID,"pno":pno,"pcomment":pcomment},
 				async: true,
 				success: function(data){
-					alert("123");
+					alert(data);
+					pcomment = pcomment+1;
+					$("#info li:eq(4)").children().html("图片评赞："+pcomment);
+					window.location.reload();
 				},
 				error: function(){
 					alert("系统正忙！");
 				}
 			}); 
-			
-			
-			
 		});
 		
-				
 	});
 
 </script>

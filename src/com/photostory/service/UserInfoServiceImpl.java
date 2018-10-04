@@ -59,10 +59,7 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public String updatePassword(String userID, String oldPassword, 
 			String newPassword1, String newPassword2) {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userID", userID);
-		map.put("userPassword",oldPassword);
-		User user = userCURD.selectUser(map);
+		User user = userCURD.getUser(userID);
 		if(newPassword1.equals("")) {
 			return "请输入新密码！";
 		}
@@ -187,6 +184,17 @@ public class UserInfoServiceImpl implements UserInfoService{
 	@Override
 	public void addCommend(Commend commend) {
 		commendCURD.addCommend(commend);
+	}
+
+	
+	/**
+	 * 查找新的用户信息
+	 * @param userID  要查找用户的ID
+	 * @return 查找到的新的用户信息
+	 */
+	@Override
+	public User getUser(String userID) {
+		return userCURD.getUser(userID);
 	}
 }
 

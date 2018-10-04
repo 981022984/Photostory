@@ -8,6 +8,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.photostory.entity.Commend;
 import com.photostory.entity.Photos;
 import com.photostory.entity.Tphotos;
+import com.photostory.entity.User;
 
 /**
  * 用户信息操作Service
@@ -79,6 +80,14 @@ public interface UserInfoService {
 	 * @param commend  要插入的评论信息
 	 */
 	public void addCommend(Commend commend);
+	
+	
+	/**
+	 * 查找新的用户信息
+	 * @param userID  要查找用户的ID
+	 * @return 查找到的新的用户信息
+	 */
+	public User getUser(String userID);
 }
 
 
